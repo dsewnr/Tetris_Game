@@ -9,12 +9,14 @@ import java.awt.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Tetris extends JFrame {
-	private Player oPlayer;	
+        private Player oPlayer;
 
-	private Container oContainer;
+        private Container oContainer;
+
+        private JLabel scoreLabel;
 	
-	private Graphics offScreen;
-	private Image bufferScreen;
+        private Graphics offScreen;
+        private Image bufferScreen;
 
 	public Tetris() {
 		super("Tetris");
@@ -44,10 +46,18 @@ public class Tetris extends JFrame {
 		oPlayer = new Player(1, this);
 	}
 
-	private void setGUI() {
-		oContainer = getContentPane();
+        private void setGUI() {
+                oContainer = getContentPane();
+                oContainer.setLayout(new BorderLayout());
 
-		oContainer.add(oPlayer.getoPanel());
+                scoreLabel = new JLabel("Score: 0");
+                scoreLabel.setForeground(Color.WHITE);
+                scoreLabel.setBackground(Color.BLACK);
+                scoreLabel.setOpaque(true);
+                scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                oContainer.add(scoreLabel, BorderLayout.NORTH);
+
+                oContainer.add(oPlayer.getoPanel(), BorderLayout.CENTER);
 		setSize(oPlayer.getoGameSettings().getGameWidth()*oPlayer.getoGameSettings().getBrickSize()+8, oPlayer.getoGameSettings().getGameHeight()*oPlayer.getoGameSettings().getBrickSize()+29);
 		setLocation(getToolkit().getScreenSize().width/2 - getSize().width/2, getToolkit().getScreenSize().height/2 - getSize().height/2);
 		//pack();
@@ -63,11 +73,17 @@ public class Tetris extends JFrame {
 		addKeyListener(oPlayer.getKeyHandler());
 	}
 
-	private void setBuffer() {
-		bufferScreen = createImage(oPlayer.getoPanel().getWidth()+1, oPlayer.getoPanel().getHeight()+1);
-		offScreen = bufferScreen.getGraphics();
-		oPlayer.setOffScreen(offScreen);		
-	}
+        private void setBuffer() {
+                bufferScreen = createImage(oPlayer.getoPanel().getWidth()+1, oPlayer.getoPanel().getHeight()+1);
+                offScreen = bufferScreen.getGraphics();
+                oPlayer.setOffScreen(offScreen);
+        }
+
+        public void updateScore(int score) {
+                if (scoreLabel != null) {
+                        scoreLabel.setText("Score: " + score);
+                }
+        }
 
 	public void drawWorld() {
 		oPlayer.draw();

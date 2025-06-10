@@ -74,17 +74,31 @@ public class Block {
 	}
 
 
-	public void draw(Graphics offScreen) {
-		for( int k = 0;k < 4; k++ ) {
-			drawBrick(offScreen, k, Color.WHITE);
-		}
-	}
+        public void draw(Graphics offScreen) {
+                for( int k = 0;k < 4; k++ ) {
+                        int colorCode = currentBricks.getoBrick()[k].getColor();
+                        drawBrick(offScreen, k, colorForCode(colorCode));
+                }
+        }
 
-	private void drawBrick(Graphics g, int k, Color c) {
-		g.setColor(c);
-		g.drawRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize(), currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
-		g.fillRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize()+2, currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
-	}
+        private Color colorForCode(int code) {
+                switch(code) {
+                        case 1: return Color.YELLOW;
+                        case 2: return Color.RED;
+                        case 3: return Color.CYAN;
+                        case 4: return Color.GREEN;
+                        case 5: return Color.BLUE;
+                        case 6: return Color.MAGENTA;
+                        case 7: return Color.PINK;
+                        default: return Color.WHITE;
+                }
+        }
+
+        private void drawBrick(Graphics g, int k, Color c) {
+                g.setColor(c);
+                g.drawRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize(), currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
+                g.fillRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize()+2, currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
+        }
 
 	public Bricks getCurrentBricks() {
 		return currentBricks;

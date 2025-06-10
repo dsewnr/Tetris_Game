@@ -36,13 +36,13 @@ public class Panel extends JPanel {
 	}
 
 	public void draw(Graphics offScreen) {
-		for( int i = 0; i < boardHeight; i++ ) {
-			for( int j = 0; j < boardWidth; j++ ) {
-				if( arrBoard[i][j] == -1 ) {
-					drawBrick(offScreen, i, j, Color.GRAY);					
-				} else if( arrBoard[i][j] != 0 ) {
-					drawBrick(offScreen, i, j, Color.WHITE);
-				}
+                for( int i = 0; i < boardHeight; i++ ) {
+                        for( int j = 0; j < boardWidth; j++ ) {
+                                if( arrBoard[i][j] == -1 ) {
+                                        drawBrick(offScreen, i, j, Color.GRAY);
+                                } else if( arrBoard[i][j] != 0 ) {
+                                        drawBrick(offScreen, i, j, colorForCode(arrBoard[i][j]));
+                                }
 
 				/*switch( arrBoard[i][j] ) {
 					case -1:
@@ -79,11 +79,24 @@ public class Panel extends JPanel {
 		}		
 	}
 
-	private void drawBrick(Graphics g, int i, int j, Color c) {
-		g.setColor(c);
-		g.drawRect(j*oGameSettings.getBrickSize(), i*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
-		g.fillRect(j*oGameSettings.getBrickSize()+2, i*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
-	}
+        private void drawBrick(Graphics g, int i, int j, Color c) {
+                g.setColor(c);
+                g.drawRect(j*oGameSettings.getBrickSize(), i*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
+                g.fillRect(j*oGameSettings.getBrickSize()+2, i*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
+        }
+
+        private Color colorForCode(int code) {
+                switch(code) {
+                        case 1: return Color.YELLOW;
+                        case 2: return Color.RED;
+                        case 3: return Color.CYAN;
+                        case 4: return Color.GREEN;
+                        case 5: return Color.BLUE;
+                        case 6: return Color.MAGENTA;
+                        case 7: return Color.PINK;
+                        default: return Color.WHITE;
+                }
+        }
 
 	public int[][] getArrBoard() {
 		return arrBoard;
