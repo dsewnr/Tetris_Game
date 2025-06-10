@@ -58,9 +58,9 @@ public class Tetris extends JFrame {
                 oContainer.add(scoreLabel, BorderLayout.NORTH);
 
                 oContainer.add(oPlayer.getoPanel(), BorderLayout.CENTER);
-		setSize(oPlayer.getoGameSettings().getGameWidth()*oPlayer.getoGameSettings().getBrickSize()+8, oPlayer.getoGameSettings().getGameHeight()*oPlayer.getoGameSettings().getBrickSize()+29);
-		setLocation(getToolkit().getScreenSize().width/2 - getSize().width/2, getToolkit().getScreenSize().height/2 - getSize().height/2);
-		//pack();
+
+                pack();
+                setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);		
