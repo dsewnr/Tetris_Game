@@ -123,24 +123,24 @@ public class ActionManager {
 		int offSetX = 0;
 		int offSetY = 0;
 
-		if( direction == "DOWN" ) {
-			offSetY++;
-		} else if( direction == "LEFT" ) {
-			offSetX--;
-		} else if( direction == "RIGHT" ) {
-			offSetX++;
-		}
+                if( "DOWN".equals(direction) ) {
+                        offSetY++;
+                } else if( "LEFT".equals(direction) ) {
+                        offSetX--;
+                } else if( "RIGHT".equals(direction) ) {
+                        offSetX++;
+                }
 
 		oBlock.move(offSetX, offSetY);
 
-		if(isCollision()) {
-			oBlock.move(-offSetX, -offSetY);
-			if( direction == "DOWN" ) {
-				doFreeze();
-				doEliminate();
-				topFrame.repaint();
-				oBlock.reset();
-				topFrame.repaint();
+                if(isCollision()) {
+                        oBlock.move(-offSetX, -offSetY);
+                        if( "DOWN".equals(direction) ) {
+                                doFreeze();
+                                doEliminate();
+                                topFrame.repaint();
+                                oBlock.reset();
+                                topFrame.repaint();
 				if(isCollision()) {
 					oGameSettings.setGameIsRunning(false);
 					System.out.println("Game Over");
@@ -181,9 +181,9 @@ public class ActionManager {
 		int counter = 0;
 		for( int i = bHeight-2; i >=0 ; i-- ) {			
 			if(fillFlag[i] == false) {
-				for( int j = 1; j < bWidth-1; j++ ) {
-					oPanel.getArrBoard()[18-counter][j] = tmpArrBoard[i][j];
-				}
+                                for( int j = 1; j < bWidth-1; j++ ) {
+                                        oPanel.getArrBoard()[bHeight-2-counter][j] = tmpArrBoard[i][j];
+                                }
 				counter++;
 			}
 		}
