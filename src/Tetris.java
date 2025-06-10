@@ -6,7 +6,7 @@ import java.awt.*;
  * User: dsewnr
  * Date: 2011/1/5
  * Time: 下午 08:16:49
- * To change this template use File | ActionManager | File Templates.
+ * To change this template use File | Settings | File Templates.
  */
 public class Tetris extends JFrame {
 	private Player oPlayer;	
