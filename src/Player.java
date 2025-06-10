@@ -5,7 +5,7 @@ import java.awt.*;
  * User: dsewnr
  * Date: 2011/1/5
  * Time: 下午 09:04:25
- * To change this template use File | ActionManager | File Templates.
+ * To change this template use File | Settings | File Templates.
  */
 public class Player extends ActionManager {
 	private int id;
