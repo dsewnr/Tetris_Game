@@ -140,7 +140,7 @@ public class Block_backup {
 				}
 				break;
 			default:
-				System.out.println("Unknow how to rotate.");
+                                System.out.println("Unknown how to rotate.");
 				break;
 		}
 	}
