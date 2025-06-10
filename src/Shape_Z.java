@@ -21,7 +21,14 @@ public class Shape_Z extends Bricks {
 		oBrick[3].setY(2);
 	}
 	
-	protected void rotate() {
-
-	}
+        protected void rotate() {
+                int px = oBrick[2].getX();
+                int py = oBrick[2].getY();
+                for (int i = 0; i < 4; i++) {
+                        int relativeX = oBrick[i].getX() - px;
+                        int relativeY = oBrick[i].getY() - py;
+                        oBrick[i].setX(px - relativeY);
+                        oBrick[i].setY(py + relativeX);
+                }
+        }
 }
