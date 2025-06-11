@@ -53,9 +53,10 @@ public class GameSettings {
 		this.gameHeight = gameHeight;
 	}
 
-        public boolean isGameIsRunning() {
-                return gameIsRunning;
-        }
+	public boolean isGameIsRunning() {
+		return gameIsRunning;
+	}
+
         public void setGameIsRunning(boolean gameIsRunning) {
                 this.gameIsRunning = gameIsRunning;
         }
@@ -67,6 +68,7 @@ public class GameSettings {
         public void setScore(int score) {
                 this.score = score;
         }
+
         public void addScore(int delta) {
                 this.score += delta;
         }
