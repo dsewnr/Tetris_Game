@@ -163,7 +163,7 @@ public class ActionManager {
 		int bWidth = oGameSettings.getGameWidth();
 		int bHeight = oGameSettings.getGameHeight();		
 		int [][] tmpArrBoard = new int [bHeight][bWidth];
-		boolean [] fillFlag = new boolean [bHeight-1];
+                boolean [] fillFlag = new boolean [bHeight-1];
 
 		for( int i = 0; i < bHeight-1; i++ ) {
 			boolean isFill = true;
@@ -178,16 +178,23 @@ public class ActionManager {
 			}
 		}
 
-		int counter = 0;
-		for( int i = bHeight-2; i >=0 ; i-- ) {			
-			if(fillFlag[i] == false) {
+                int counter = 0;
+                int linesCleared = 0;
+                for( int i = bHeight-2; i >=0 ; i-- ) {
+                        if(fillFlag[i] == false) {
                                 for( int j = 1; j < bWidth-1; j++ ) {
                                         oPanel.getArrBoard()[bHeight-2-counter][j] = tmpArrBoard[i][j];
                                 }
-				counter++;
-			}
-		}
-	}
+                                counter++;
+                        } else {
+                                linesCleared++;
+                        }
+                }
+
+                if(linesCleared > 0) {
+                        oGameSettings.setScore(oGameSettings.getScore() + linesCleared * 100);
+                }
+        }
 		
 	public boolean isCollision() {
 		for( int i = 0; i < 4; i++ ) {
