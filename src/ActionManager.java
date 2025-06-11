@@ -193,6 +193,9 @@ public class ActionManager {
 
                 if(linesCleared > 0) {
                         oGameSettings.setScore(oGameSettings.getScore() + linesCleared * 100);
+                        if (topFrame != null) {
+                                topFrame.updateScore();
+                        }
                 }
         }
 		
