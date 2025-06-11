@@ -11,7 +11,7 @@ import java.util.*;
 public class Block {
 	int index;
 	Bricks currentBricks;
-	Map Shapes;
+        Map<Integer, Bricks> shapes;
 	Shape_Square oSquare;
 	Shape_Line oLine;
 	Shape_RevT oRevT;
@@ -24,7 +24,7 @@ public class Block {
 
 	public Block(GameSettings gameSettings) {
 		oGameSettings = gameSettings;
-		Shapes = new HashMap<Integer,Bricks>();	
+                shapes = new HashMap<Integer,Bricks>();
 		initShapes();
 		addShapes();
 		reset();
@@ -41,7 +41,7 @@ public class Block {
 	}
 
 	private void initCurrentBricks() {
-		currentBricks = (Bricks)Shapes.get(index);
+                currentBricks = shapes.get(index);
 		currentBricks.init();
 	}
 
@@ -56,13 +56,13 @@ public class Block {
 	}
 
 	private void addShapes() {
-		Shapes.put(0,oSquare);
-		Shapes.put(1,oLine);
-		Shapes.put(2,oRevT);
-		Shapes.put(3,oZ);
-		Shapes.put(4,oRevZ);
-		Shapes.put(5,oL);
-		Shapes.put(6,oRevL);
+                shapes.put(0,oSquare);
+                shapes.put(1,oLine);
+                shapes.put(2,oRevT);
+                shapes.put(3,oZ);
+                shapes.put(4,oRevZ);
+                shapes.put(5,oL);
+                shapes.put(6,oRevL);
 	}
 
 	public void move(int offSetX, int offSetY) {
