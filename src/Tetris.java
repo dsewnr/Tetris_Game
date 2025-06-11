@@ -50,7 +50,6 @@ public class Tetris extends JFrame {
                 oContainer = getContentPane();
 
                 oContainer.setLayout(new BorderLayout());
-                scoreLabel = new JLabel("Score: 0");
                 scoreLabel.setForeground(Color.WHITE);
                 scoreLabel.setBackground(Color.BLACK);
                 scoreLabel.setOpaque(true);

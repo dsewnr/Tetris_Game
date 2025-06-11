@@ -165,18 +165,18 @@ public class ActionManager {
                int [][] tmpArrBoard = new int [bHeight][bWidth];
                boolean [] fillFlag = new boolean [bHeight-1];
 
-               for( int i = 0; i < bHeight-1; i++ ) {
-                       boolean isFill = true;
-                       for( int j = 1; j < bWidth-1; j++ ) {
-                               if(oPanel.getArrBoard()[i][j] == 0) {
-                                       isFill = false;
-                               }
-                               tmpArrBoard[i][j] = oPanel.getArrBoard()[i][j];
-                       }
-                       if(isFill) {
-                               fillFlag[i] = true;
-                       }
-               }
+		for( int i = 0; i < bHeight-1; i++ ) {
+			boolean isFill = true;
+			for( int j = 1; j < bWidth-1; j++ ) {
+				if(oPanel.getArrBoard()[i][j] == 0) {
+					isFill = false;					
+				}
+				tmpArrBoard[i][j] = oPanel.getArrBoard()[i][j];
+			}
+			if(isFill) {
+				fillFlag[i] = true;
+			}
+		}
 
                int counter = 0;
                int linesCleared = 0;
