@@ -12,7 +12,6 @@ public class GameSettings {
         private int gameHeight;
         private boolean gameIsRunning;
         private int score;
-
         public GameSettings() {
                 brickSize = 20;
                 gameSpeed = 500;
@@ -68,5 +67,9 @@ public class GameSettings {
 
         public void setScore(int score) {
                 this.score = score;
+        }
+
+        public void addScore(int delta) {
+                this.score += delta;
         }
 }

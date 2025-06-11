@@ -163,7 +163,7 @@ public class ActionManager {
 		int bWidth = oGameSettings.getGameWidth();
 		int bHeight = oGameSettings.getGameHeight();		
 		int [][] tmpArrBoard = new int [bHeight][bWidth];
-                boolean [] fillFlag = new boolean [bHeight-1];
+    boolean [] fillFlag = new boolean [bHeight-1];
 
 		for( int i = 0; i < bHeight-1; i++ ) {
 			boolean isFill = true;

@@ -50,17 +50,18 @@ public class Tetris extends JFrame {
                 oContainer = getContentPane();
 
                 oContainer.setLayout(new BorderLayout());
-                scoreLabel = new JLabel("Score: 0");
+                scoreLabel.setForeground(Color.WHITE);
+                scoreLabel.setBackground(Color.BLACK);
+                scoreLabel.setOpaque(true);
                 scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 oContainer.add(scoreLabel, BorderLayout.NORTH);
                 oContainer.add(oPlayer.getoPanel(), BorderLayout.CENTER);
-                setSize(oPlayer.getoGameSettings().getGameWidth()*oPlayer.getoGameSettings().getBrickSize()+8,
-                        oPlayer.getoGameSettings().getGameHeight()*oPlayer.getoGameSettings().getBrickSize()+50);
-                setLocation(getToolkit().getScreenSize().width/2 - getSize().width/2, getToolkit().getScreenSize().height/2 - getSize().height/2);
-                //pack();
+
+                pack();
+                setLocationRelativeTo(null);
                 setResizable(false);
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+                setVisible(true);
                 setFocusable(true);
         }
 
@@ -81,9 +82,10 @@ public class Tetris extends JFrame {
 		repaint();
 	}
 	
-	public void paint(Graphics g) {
-		g.drawImage(bufferScreen, 3, 25, this);
-	}
+       public void paint(Graphics g) {
+               super.paint(g);
+               g.drawImage(bufferScreen, 3, 25, this);
+       }
 	
         public void update(Graphics g) {
                 paint(g);
