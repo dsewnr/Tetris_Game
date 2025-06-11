@@ -46,6 +46,7 @@ public class Panel extends JPanel {
                         }
                 }
         }
+
         private void drawBrick(Graphics g, int i, int j, Color c) {
                 g.setColor(c);
                 g.drawRect(j*oGameSettings.getBrickSize(), i*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());

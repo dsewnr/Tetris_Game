@@ -159,43 +159,44 @@ public class ActionManager {
 		}
 	}
 
-        synchronized public void doEliminate() {
-                int bWidth = oGameSettings.getGameWidth();
-                int bHeight = oGameSettings.getGameHeight();
-                int [][] tmpArrBoard = new int [bHeight][bWidth];
-                boolean [] fillFlag = new boolean [bHeight-1];
-                for( int i = 0; i < bHeight-1; i++ ) {
-                        boolean isFill = true;
-			for( int j = 1; j < bWidth-1; j++ ) {
-				if(oPanel.getArrBoard()[i][j] == 0) {
-					isFill = false;					
-				}
-				tmpArrBoard[i][j] = oPanel.getArrBoard()[i][j];
-			}
-                        if(isFill) {
-                                fillFlag[i] = true;
-                        }
-                }
+       synchronized public void doEliminate() {
+               int bWidth = oGameSettings.getGameWidth();
+               int bHeight = oGameSettings.getGameHeight();
+               int [][] tmpArrBoard = new int [bHeight][bWidth];
+               boolean [] fillFlag = new boolean [bHeight-1];
 
-                int counter = 0;
-                int linesCleared = 0;
-                for( int i = bHeight-2; i >=0 ; i-- ) {
-                        if(!fillFlag[i]) {
-                                for( int j = 1; j < bWidth-1; j++ ) {
-                                        oPanel.getArrBoard()[bHeight-2-counter][j] = tmpArrBoard[i][j];
-                                }
-                                counter++;
-                        } else {
-                                linesCleared++;
-                        }
-                }
+               for( int i = 0; i < bHeight-1; i++ ) {
+                       boolean isFill = true;
+                       for( int j = 1; j < bWidth-1; j++ ) {
+                               if(oPanel.getArrBoard()[i][j] == 0) {
+                                       isFill = false;
+                               }
+                               tmpArrBoard[i][j] = oPanel.getArrBoard()[i][j];
+                       }
+                       if(isFill) {
+                               fillFlag[i] = true;
+                       }
+               }
 
-                if(linesCleared > 0) {
-                        oGameSettings.setScore(oGameSettings.getScore() + linesCleared * 100);
-                        if (topFrame != null) {
-                                topFrame.updateScore();
-                        }
-                }
+               int counter = 0;
+               int linesCleared = 0;
+               for( int i = bHeight-2; i >=0 ; i-- ) {
+                       if(!fillFlag[i]) {
+                               for( int j = 1; j < bWidth-1; j++ ) {
+                                       oPanel.getArrBoard()[bHeight-2-counter][j] = tmpArrBoard[i][j];
+                               }
+                               counter++;
+                       } else {
+                               linesCleared++;
+                       }
+               }
+
+               if(linesCleared > 0) {
+                       oGameSettings.setScore(oGameSettings.getScore() + linesCleared * 100);
+                       if (topFrame != null) {
+                               topFrame.updateScore();
+                       }
+               }
         }
 		
 	public boolean isCollision() {

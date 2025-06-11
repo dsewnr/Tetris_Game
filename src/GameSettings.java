@@ -12,7 +12,6 @@ public class GameSettings {
         private int gameHeight;
         private boolean gameIsRunning;
         private int score;
-
         public GameSettings() {
                 brickSize = 20;
                 gameSpeed = 500;
@@ -57,7 +56,6 @@ public class GameSettings {
         public boolean isGameIsRunning() {
                 return gameIsRunning;
         }
-
         public void setGameIsRunning(boolean gameIsRunning) {
                 this.gameIsRunning = gameIsRunning;
         }

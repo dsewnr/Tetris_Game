@@ -83,10 +83,10 @@ public class Tetris extends JFrame {
 		repaint();
 	}
 	
-        public void paint(Graphics g) {
-                super.paint(g);
-                g.drawImage(bufferScreen, 3, 25, this);
-        }
+       public void paint(Graphics g) {
+               super.paint(g);
+               g.drawImage(bufferScreen, 3, 25, this);
+       }
 	
         public void update(Graphics g) {
                 paint(g);
