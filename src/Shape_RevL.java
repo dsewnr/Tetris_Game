@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Shape_RevL extends Bricks {
-	public Shape_RevL() {
-		setColor(7);
-	}
+        public Shape_RevL() {
+                setColor(TetrominoColor.PINK);
+        }
 
 	protected void init() {
 		oBrick[0].setX(7);

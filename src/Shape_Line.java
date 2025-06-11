@@ -7,9 +7,9 @@
  */
 public class Shape_Line extends Bricks {
 	boolean isFlip;
-	public Shape_Line() {
-		setColor(2);
-	}
+        public Shape_Line() {
+                setColor(TetrominoColor.RED);
+        }
 
 	protected void init() {
 		oBrick[0].setX(5);
@@ -21,10 +21,10 @@ public class Shape_Line extends Bricks {
 		oBrick[3].setX(8);
 		oBrick[3].setY(0);
 		isFlip = true;
-		oBrick[0].setColor(2);
-		oBrick[1].setColor(3);
-		oBrick[2].setColor(4);
-		oBrick[3].setColor(5);
+                oBrick[0].setColor(TetrominoColor.RED);
+                oBrick[1].setColor(TetrominoColor.CYAN);
+                oBrick[2].setColor(TetrominoColor.GREEN);
+                oBrick[3].setColor(TetrominoColor.BLUE);
 
 	}
 

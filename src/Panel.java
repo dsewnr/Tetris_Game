@@ -44,37 +44,37 @@ public class Panel extends JPanel {
 					drawBrick(offScreen, i, j, Color.WHITE);
 				}
 
-				/*switch( arrBoard[i][j] ) {
-					case -1:
-						drawBrick(offScreen, i, j, Color.GRAY);
-						break;
-					case 0:
-						break;
-					case 1:
-						drawBrick(offScreen, i, j, Color.YELLOW);
-						break;
-					case 2:
-						drawBrick(offScreen, i, j, Color.RED);
-						break;
-					case 3:
-						drawBrick(offScreen, i, j, Color.CYAN);
-						break;
-					case 4:
-						drawBrick(offScreen, i, j, Color.GREEN);
-						break;
-					case 5:
-						drawBrick(offScreen, i, j, Color.BLUE);
-						break;
-					case 6:
-						drawBrick(offScreen, i, j, Color.MAGENTA);
-						break;
-					case 7:
-						drawBrick(offScreen, i, j, Color.PINK);
-						break;
-					default:
-						drawBrick(offScreen, i, j, Color.LIGHT_GRAY);
-						break;
-				}*/
+                                /*switch( arrBoard[i][j] ) {
+                                        case -1:
+                                                drawBrick(offScreen, i, j, Color.GRAY);
+                                                break;
+                                        case 0:
+                                                break;
+                                        case TetrominoColor.YELLOW:
+                                                drawBrick(offScreen, i, j, Color.YELLOW);
+                                                break;
+                                        case TetrominoColor.RED:
+                                                drawBrick(offScreen, i, j, Color.RED);
+                                                break;
+                                        case TetrominoColor.CYAN:
+                                                drawBrick(offScreen, i, j, Color.CYAN);
+                                                break;
+                                        case TetrominoColor.GREEN:
+                                                drawBrick(offScreen, i, j, Color.GREEN);
+                                                break;
+                                        case TetrominoColor.BLUE:
+                                                drawBrick(offScreen, i, j, Color.BLUE);
+                                                break;
+                                        case TetrominoColor.MAGENTA:
+                                                drawBrick(offScreen, i, j, Color.MAGENTA);
+                                                break;
+                                        case TetrominoColor.PINK:
+                                                drawBrick(offScreen, i, j, Color.PINK);
+                                                break;
+                                        default:
+                                                drawBrick(offScreen, i, j, Color.LIGHT_GRAY);
+                                                break;
+                                }*/
 			}
 		}		
 	}

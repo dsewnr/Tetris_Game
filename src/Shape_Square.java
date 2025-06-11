@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Shape_Square extends Bricks  {
-	public Shape_Square() {
-		setColor(1);
-	}
+        public Shape_Square() {
+                setColor(TetrominoColor.YELLOW);
+        }
 
 	protected void init() {
 		oBrick[0].setX(6);
