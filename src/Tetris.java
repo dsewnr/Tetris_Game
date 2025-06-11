@@ -77,6 +77,10 @@ public class Tetris extends JFrame {
 	public void paint(Graphics g) {
 		g.drawImage(bufferScreen, 3, 25, this);
 	}
+	
+	public void update(Graphics g) {
+		paint(g);
+	}
 
 	public void stop() {
 		Thread.interrupted();		
