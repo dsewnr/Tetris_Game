@@ -6,19 +6,21 @@
  * To change this template use File | Settings | File Templates.
  */
 public class GameSettings {
-	private int brickSize;
-	private int gameSpeed;
-	private int gameWidth;
-	private int gameHeight;
-	private boolean gameIsRunning;
+        private int brickSize;
+        private int gameSpeed;
+        private int gameWidth;
+        private int gameHeight;
+        private boolean gameIsRunning;
+        private int score;
 
-	public GameSettings() {
-		brickSize = 20;
-		gameSpeed = 500;
-		gameWidth = 14;
-		gameHeight = 20;
-		gameIsRunning = true;
-	}
+        public GameSettings() {
+                brickSize = 20;
+                gameSpeed = 500;
+                gameWidth = 14;
+                gameHeight = 20;
+                gameIsRunning = true;
+                score = 0;
+        }
 
 	public int getBrickSize() {
 		return brickSize;
@@ -52,11 +54,22 @@ public class GameSettings {
 		this.gameHeight = gameHeight;
 	}
 
-	public boolean isGameIsRunning() {
-		return gameIsRunning;
-	}
+        public boolean isGameIsRunning() {
+                return gameIsRunning;
+        }
 
-	public void setGameIsRunning(boolean gameIsRunning) {
-		this.gameIsRunning = gameIsRunning;
-	}
+        public void setGameIsRunning(boolean gameIsRunning) {
+                this.gameIsRunning = gameIsRunning;
+        }
+
+        public int getScore() {
+                return score;
+        }
+
+        public void setScore(int score) {
+                this.score = score;
+        }
+        public void addScore(int delta) {
+                this.score += delta;
+        }
 }

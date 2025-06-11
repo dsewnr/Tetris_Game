@@ -36,54 +36,42 @@ public class Panel extends JPanel {
 	}
 
 	public void draw(Graphics offScreen) {
-		for( int i = 0; i < boardHeight; i++ ) {
-			for( int j = 0; j < boardWidth; j++ ) {
-				if( arrBoard[i][j] == -1 ) {
-					drawBrick(offScreen, i, j, Color.GRAY);					
-				} else if( arrBoard[i][j] != 0 ) {
-					drawBrick(offScreen, i, j, Color.WHITE);
-				}
+                for( int i = 0; i < boardHeight; i++ ) {
+                        for( int j = 0; j < boardWidth; j++ ) {
+                                if( arrBoard[i][j] == -1 ) {
+                                        drawBrick(offScreen, i, j, Color.GRAY);
+                                } else if( arrBoard[i][j] != 0 ) {
+                                        drawBrick(offScreen, i, j, mapColor(arrBoard[i][j]));
+                                }
+                        }
+                }
+        }
+        private void drawBrick(Graphics g, int i, int j, Color c) {
+                g.setColor(c);
+                g.drawRect(j*oGameSettings.getBrickSize(), i*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
+                g.fillRect(j*oGameSettings.getBrickSize()+2, i*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
+        }
 
-				/*switch( arrBoard[i][j] ) {
-					case -1:
-						drawBrick(offScreen, i, j, Color.GRAY);
-						break;
-					case 0:
-						break;
-					case 1:
-						drawBrick(offScreen, i, j, Color.YELLOW);
-						break;
-					case 2:
-						drawBrick(offScreen, i, j, Color.RED);
-						break;
-					case 3:
-						drawBrick(offScreen, i, j, Color.CYAN);
-						break;
-					case 4:
-						drawBrick(offScreen, i, j, Color.GREEN);
-						break;
-					case 5:
-						drawBrick(offScreen, i, j, Color.BLUE);
-						break;
-					case 6:
-						drawBrick(offScreen, i, j, Color.MAGENTA);
-						break;
-					case 7:
-						drawBrick(offScreen, i, j, Color.PINK);
-						break;
-					default:
-						drawBrick(offScreen, i, j, Color.LIGHT_GRAY);
-						break;
-				}*/
-			}
-		}		
-	}
-
-	private void drawBrick(Graphics g, int i, int j, Color c) {
-		g.setColor(c);
-		g.drawRect(j*oGameSettings.getBrickSize(), i*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
-		g.fillRect(j*oGameSettings.getBrickSize()+2, i*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
-	}
+        private Color mapColor(int color) {
+                switch (color) {
+                        case TetrominoColor.YELLOW:
+                                return Color.YELLOW;
+                        case TetrominoColor.RED:
+                                return Color.RED;
+                        case TetrominoColor.CYAN:
+                                return Color.CYAN;
+                        case TetrominoColor.GREEN:
+                                return Color.GREEN;
+                        case TetrominoColor.BLUE:
+                                return Color.BLUE;
+                        case TetrominoColor.MAGENTA:
+                                return Color.MAGENTA;
+                        case TetrominoColor.PINK:
+                                return Color.PINK;
+                        default:
+                                return Color.LIGHT_GRAY;
+                }
+        }
 
 	public int[][] getArrBoard() {
 		return arrBoard;

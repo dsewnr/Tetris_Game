@@ -1,6 +1,8 @@
 # Tetris Game
 
 This project is a simple Tetris clone implemented with Java Swing.
+It now includes a scoreboard that increases when you clear rows and
+each tetromino is drawn in its own color.
 
 ## Building
 

@@ -9,9 +9,11 @@ import java.awt.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Tetris extends JFrame {
-	private Player oPlayer;	
+        private Player oPlayer;
 
-	private Container oContainer;
+        private JLabel scoreLabel;
+
+        private Container oContainer;
 	
 	private Graphics offScreen;
 	private Image bufferScreen;
@@ -44,18 +46,25 @@ public class Tetris extends JFrame {
 		oPlayer = new Player(1, this);
 	}
 
-	private void setGUI() {
-		oContainer = getContentPane();
+        private void setGUI() {
+                oContainer = getContentPane();
 
-		oContainer.add(oPlayer.getoPanel());
-		setSize(oPlayer.getoGameSettings().getGameWidth()*oPlayer.getoGameSettings().getBrickSize()+8, oPlayer.getoGameSettings().getGameHeight()*oPlayer.getoGameSettings().getBrickSize()+29);
-		setLocation(getToolkit().getScreenSize().width/2 - getSize().width/2, getToolkit().getScreenSize().height/2 - getSize().height/2);
-		//pack();
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);		
-		setFocusable(true);		
-	}
+                oContainer.setLayout(new BorderLayout());
+                scoreLabel = new JLabel("Score: 0");
+                scoreLabel.setForeground(Color.WHITE);
+                scoreLabel.setBackground(Color.BLACK);
+                scoreLabel.setOpaque(true);
+                scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                oContainer.add(scoreLabel, BorderLayout.NORTH);
+                oContainer.add(oPlayer.getoPanel(), BorderLayout.CENTER);
+
+                pack();
+                setLocationRelativeTo(null);
+                setResizable(false);
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setVisible(true);
+                setFocusable(true);
+        }
 
 	private void setGame() {
 		setBuffer();
@@ -74,11 +83,22 @@ public class Tetris extends JFrame {
 		repaint();
 	}
 	
-	public void paint(Graphics g) {
-		g.drawImage(bufferScreen, 3, 25, this);
-	}
+        public void paint(Graphics g) {
+                super.paint(g);
+                g.drawImage(bufferScreen, 3, 25, this);
+        }
+	
+        public void update(Graphics g) {
+                paint(g);
+        }
 
-	public void stop() {
-		Thread.interrupted();		
-	}
+        public void updateScore() {
+                if (scoreLabel != null) {
+                        scoreLabel.setText("Score: " + oPlayer.getoGameSettings().getScore());
+                }
+        }
+
+        public void stop() {
+                Thread.interrupted();
+        }
 }
