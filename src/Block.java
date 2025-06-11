@@ -11,7 +11,7 @@ import java.util.*;
 public class Block {
 	int index;
 	Bricks currentBricks;
-	Map Shapes;
+        Map<Integer, Bricks> shapes;
 	Shape_Square oSquare;
 	Shape_Line oLine;
 	Shape_RevT oRevT;
@@ -24,7 +24,7 @@ public class Block {
 
 	public Block(GameSettings gameSettings) {
 		oGameSettings = gameSettings;
-		Shapes = new HashMap<Integer,Bricks>();	
+                shapes = new HashMap<Integer,Bricks>();
 		initShapes();
 		addShapes();
 		reset();
@@ -41,7 +41,7 @@ public class Block {
 	}
 
 	private void initCurrentBricks() {
-		currentBricks = (Bricks)Shapes.get(index);
+                currentBricks = shapes.get(index);
 		currentBricks.init();
 	}
 
@@ -56,13 +56,13 @@ public class Block {
 	}
 
 	private void addShapes() {
-		Shapes.put(0,oSquare);
-		Shapes.put(1,oLine);
-		Shapes.put(2,oRevT);
-		Shapes.put(3,oZ);
-		Shapes.put(4,oRevZ);
-		Shapes.put(5,oL);
-		Shapes.put(6,oRevL);
+                shapes.put(0,oSquare);
+                shapes.put(1,oLine);
+                shapes.put(2,oRevT);
+                shapes.put(3,oZ);
+                shapes.put(4,oRevZ);
+                shapes.put(5,oL);
+                shapes.put(6,oRevL);
 	}
 
 	public void move(int offSetX, int offSetY) {
@@ -76,21 +76,8 @@ public class Block {
 
         public void draw(Graphics offScreen) {
                 for( int k = 0;k < 4; k++ ) {
-                        int colorCode = currentBricks.getoBrick()[k].getColor();
-                        drawBrick(offScreen, k, colorForCode(colorCode));
-                }
-        }
-
-        private Color colorForCode(int code) {
-                switch(code) {
-                        case 1: return Color.YELLOW;
-                        case 2: return Color.RED;
-                        case 3: return Color.CYAN;
-                        case 4: return Color.GREEN;
-                        case 5: return Color.BLUE;
-                        case 6: return Color.MAGENTA;
-                        case 7: return Color.PINK;
-                        default: return Color.WHITE;
+                        int brickColor = currentBricks.getoBrick()[k].getColor();
+                        drawBrick(offScreen, k, mapColor(brickColor));
                 }
         }
 
@@ -98,6 +85,27 @@ public class Block {
                 g.setColor(c);
                 g.drawRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize(), currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize(), oGameSettings.getBrickSize(), oGameSettings.getBrickSize());
                 g.fillRect(currentBricks.getoBrick()[k].getX()*oGameSettings.getBrickSize()+2, currentBricks.getoBrick()[k].getY()*oGameSettings.getBrickSize()+2, oGameSettings.getBrickSize()-3, oGameSettings.getBrickSize()-3);
+        }
+
+        private Color mapColor(int color) {
+                switch (color) {
+                        case TetrominoColor.YELLOW:
+                                return Color.YELLOW;
+                        case TetrominoColor.RED:
+                                return Color.RED;
+                        case TetrominoColor.CYAN:
+                                return Color.CYAN;
+                        case TetrominoColor.GREEN:
+                                return Color.GREEN;
+                        case TetrominoColor.BLUE:
+                                return Color.BLUE;
+                        case TetrominoColor.MAGENTA:
+                                return Color.MAGENTA;
+                        case TetrominoColor.PINK:
+                                return Color.PINK;
+                        default:
+                                return Color.WHITE;
+                }
         }
 
 	public Bricks getCurrentBricks() {

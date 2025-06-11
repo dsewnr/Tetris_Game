@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Shape_RevZ extends Bricks {
-	public Shape_RevZ() {
-		setColor(5);
-	}
+        public Shape_RevZ() {
+                setColor(TetrominoColor.BLUE);
+        }
 
 	protected void init() {
 		oBrick[0].setX(6);

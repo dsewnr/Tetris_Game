@@ -11,12 +11,12 @@ import java.awt.*;
 public class Tetris extends JFrame {
         private Player oPlayer;
 
-        private Container oContainer;
-
         private JLabel scoreLabel;
+
+        private Container oContainer;
 	
-        private Graphics offScreen;
-        private Image bufferScreen;
+	private Graphics offScreen;
+	private Image bufferScreen;
 
 	public Tetris() {
 		super("Tetris");
@@ -48,24 +48,23 @@ public class Tetris extends JFrame {
 
         private void setGUI() {
                 oContainer = getContentPane();
-                oContainer.setLayout(new BorderLayout());
 
+                oContainer.setLayout(new BorderLayout());
                 scoreLabel = new JLabel("Score: 0");
                 scoreLabel.setForeground(Color.WHITE);
                 scoreLabel.setBackground(Color.BLACK);
                 scoreLabel.setOpaque(true);
                 scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 oContainer.add(scoreLabel, BorderLayout.NORTH);
-
                 oContainer.add(oPlayer.getoPanel(), BorderLayout.CENTER);
 
                 pack();
                 setLocationRelativeTo(null);
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);		
-		setFocusable(true);		
-	}
+                setResizable(false);
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setVisible(true);
+                setFocusable(true);
+        }
 
 	private void setGame() {
 		setBuffer();
@@ -73,17 +72,11 @@ public class Tetris extends JFrame {
 		addKeyListener(oPlayer.getKeyHandler());
 	}
 
-        private void setBuffer() {
-                bufferScreen = createImage(oPlayer.getoPanel().getWidth()+1, oPlayer.getoPanel().getHeight()+1);
-                offScreen = bufferScreen.getGraphics();
-                oPlayer.setOffScreen(offScreen);
-        }
-
-        public void updateScore(int score) {
-                if (scoreLabel != null) {
-                        scoreLabel.setText("Score: " + score);
-                }
-        }
+	private void setBuffer() {
+		bufferScreen = createImage(oPlayer.getoPanel().getWidth()+1, oPlayer.getoPanel().getHeight()+1);
+		offScreen = bufferScreen.getGraphics();
+		oPlayer.setOffScreen(offScreen);		
+	}
 
 	public void drawWorld() {
 		oPlayer.draw();
@@ -94,8 +87,18 @@ public class Tetris extends JFrame {
                 super.paint(g);
                 g.drawImage(bufferScreen, 3, 25, this);
         }
+	
+        public void update(Graphics g) {
+                paint(g);
+        }
 
-	public void stop() {
-		Thread.interrupted();		
-	}
+        public void updateScore() {
+                if (scoreLabel != null) {
+                        scoreLabel.setText("Score: " + oPlayer.getoGameSettings().getScore());
+                }
+        }
+
+        public void stop() {
+                Thread.interrupted();
+        }
 }
