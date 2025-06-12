@@ -149,9 +149,36 @@ public class ActionManager {
 		}
 	}
 
-	synchronized public void doRotate() {
-		oBlock.rotate();
-	}
+        synchronized public void doRotate() {
+                Brick[] bricks = oBlock.getCurrentBricks().getoBrick();
+                int[] oldX = new int[4];
+                int[] oldY = new int[4];
+                for (int i = 0; i < 4; i++) {
+                        oldX[i] = bricks[i].getX();
+                        oldY[i] = bricks[i].getY();
+                }
+
+                oBlock.rotate();
+
+                int width = oGameSettings.getGameWidth();
+                int height = oGameSettings.getGameHeight();
+                boolean outOfRange = false;
+                for (int i = 0; i < 4; i++) {
+                        int x = bricks[i].getX();
+                        int y = bricks[i].getY();
+                        if (x < 0 || x >= width || y < 0 || y >= height) {
+                                outOfRange = true;
+                                break;
+                        }
+                }
+
+                if (outOfRange || isCollision()) {
+                        for (int i = 0; i < 4; i++) {
+                                bricks[i].setX(oldX[i]);
+                                bricks[i].setY(oldY[i]);
+                        }
+                }
+        }
 
 	synchronized public void doFreeze() {
 		for( int i = 0; i < 4; i++ ) {			

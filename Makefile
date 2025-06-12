@@ -7,7 +7,8 @@ build:
 test: build
 	javac -cp $(JUNIT):$(HAMCREST):out -d out/ src/test/java/*.java
 	java -cp $(JUNIT):$(HAMCREST):out org.junit.runner.JUnitCore \
-	ActionManagerMoveTest ActionManagerEliminateTest ActionManagerScoreTest
+	    ActionManagerMoveTest ActionManagerEliminateTest ActionManagerScoreTest \
+	        ActionManagerRotateWallTest
 
 package:
 	jar -cvfm Tetris_Game.jar out/MANIFEST.MF -C out/ .
