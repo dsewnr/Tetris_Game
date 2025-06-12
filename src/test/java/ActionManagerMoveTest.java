@@ -18,7 +18,7 @@ public class ActionManagerMoveTest {
         int beforeX = block.getCurrentBricks().getoBrick()[0].getX();
         int beforeY = block.getCurrentBricks().getoBrick()[0].getY();
 
-        am.doMove("LEFT");
+        am.doMove(Direction.LEFT);
 
         assertEquals(beforeX - 1, block.getCurrentBricks().getoBrick()[0].getX());
         assertEquals(beforeY, block.getCurrentBricks().getoBrick()[0].getY());

@@ -97,20 +97,20 @@ public class ActionManager {
 		this.rotateFlag = rotateFlag;
 	}
 
-	public void processDirectionInput() {
-		if( isDownFlag() ) {
-			doMove("DOWN");
-			topFrame.drawWorld();
-		}
-		if( isLeftFlag() ) {
-			doMove("LEFT");
-			topFrame.drawWorld();
-		}
-		if( isRightFlag() ) {
-			doMove("RIGHT");
-			topFrame.drawWorld();
-		}
-	}
+        public void processDirectionInput() {
+                if( isDownFlag() ) {
+                        doMove(Direction.DOWN);
+                        topFrame.drawWorld();
+                }
+                if( isLeftFlag() ) {
+                        doMove(Direction.LEFT);
+                        topFrame.drawWorld();
+                }
+                if( isRightFlag() ) {
+                        doMove(Direction.RIGHT);
+                        topFrame.drawWorld();
+                }
+        }
 
 	public void processRotateInput() {
 		if( isRotateFlag() ) {
@@ -119,15 +119,15 @@ public class ActionManager {
 		}	
 	}
 
-	synchronized public void doMove(String direction) {
-		int offSetX = 0;
-		int offSetY = 0;
+        synchronized public void doMove(Direction direction) {
+                int offSetX = 0;
+                int offSetY = 0;
 
-                if( "DOWN".equals(direction) ) {
+                if( direction == Direction.DOWN ) {
                         offSetY++;
-                } else if( "LEFT".equals(direction) ) {
+                } else if( direction == Direction.LEFT ) {
                         offSetX--;
-                } else if( "RIGHT".equals(direction) ) {
+                } else if( direction == Direction.RIGHT ) {
                         offSetX++;
                 }
 
@@ -135,7 +135,7 @@ public class ActionManager {
 
                 if(isCollision()) {
                         oBlock.move(-offSetX, -offSetY);
-                        if( "DOWN".equals(direction) ) {
+                        if( direction == Direction.DOWN ) {
                                 doFreeze();
                                 doEliminate();
                                 topFrame.repaint();

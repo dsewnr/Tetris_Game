@@ -29,7 +29,7 @@ public class Tetris extends JFrame {
 	public void run() {	
 		while(oPlayer.isGameRunning()) {
 			try {
-				oPlayer.doMove("DOWN");
+                                oPlayer.doMove(Direction.DOWN);
 				drawWorld();
 				Thread.sleep(350);
 			} catch(InterruptedException e) {
