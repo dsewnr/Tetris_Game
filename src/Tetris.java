@@ -42,9 +42,10 @@ public class Tetris extends JFrame {
 		new Tetris().run();
 	}
 
-	private void setProgram() {
-		oPlayer = new Player(1, this);
-	}
+        private void setProgram() {
+                oPlayer = new Player(1, this);
+                scoreLabel = new JLabel("Score: 0");
+        }
 
         private void setGUI() {
                 oContainer = getContentPane();
@@ -92,9 +93,7 @@ public class Tetris extends JFrame {
         }
 
         public void updateScore() {
-                if (scoreLabel != null) {
-                        scoreLabel.setText("Score: " + oPlayer.getoGameSettings().getScore());
-                }
+                scoreLabel.setText("Score: " + oPlayer.getoGameSettings().getScore());
         }
 
         public void stop() {
